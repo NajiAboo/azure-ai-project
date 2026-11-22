@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="510" viewBox="0 0 1200 510" role="img" aria-labelledby="title desc">
+  <title id="title">Azure RAG tutorial architecture</title>
+  <desc id="desc">Files in Azure Blob Storage are indexed into Azure AI Search. A Python RAG application retrieves matching chunks and sends them to Azure AI Foundry for answer generation.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#356a93"/></marker>
+    <style>
+      .title { font: 700 26px Arial, sans-serif; fill: #102a43; }
+      .label { font: 700 19px Arial, sans-serif; fill: #102a43; }
+      .body { font: 15px Arial, sans-serif; fill: #334e68; }
+      .small { font: 14px Arial, sans-serif; fill: #486581; }
+      .box { stroke-width: 2; rx: 16; }
+      .arrow { stroke: #356a93; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1200" height="510" fill="#f7fbff"/>
+  <text x="600" y="43" text-anchor="middle" class="title">RAG application architecture</text>
+
+  <rect x="45" y="128" width="235" height="145" class="box" fill="#e8f4fd" stroke="#2c7fb8"/>
+  <text x="162" y="174" text-anchor="middle" class="label">Azure Blob Storage</text>
+  <text x="162" y="204" text-anchor="middle" class="body">HR policy documents</text>
+  <text x="162" y="230" text-anchor="middle" class="small">PDF, DOCX, HTML, TXT</text>
+
+  <rect x="365" y="96" width="250" height="210" class="box" fill="#eef7ed" stroke="#4b9b59"/>
+  <text x="490" y="142" text-anchor="middle" class="label">Azure AI Search</text>
+  <text x="490" y="172" text-anchor="middle" class="body">Indexer: extract &amp; chunk</text>
+  <text x="490" y="198" text-anchor="middle" class="body">Search index: chunks + metadata</text>
+  <text x="490" y="224" text-anchor="middle" class="body">Keyword / vector retrieval</text>
+  <text x="490" y="260" text-anchor="middle" class="small">Existing index: rag-…</text>
+
+  <rect x="700" y="128" width="210" height="145" class="box" fill="#fff5e6" stroke="#dc8d28"/>
+  <text x="805" y="174" text-anchor="middle" class="label">Python notebook</text>
+  <text x="805" y="204" text-anchor="middle" class="body">Retrieve top chunks</text>
+  <text x="805" y="230" text-anchor="middle" class="small">Build grounded prompt</text>
+
+  <rect x="980" y="128" width="175" height="145" class="box" fill="#f3edfa" stroke="#8054a5"/>
+  <text x="1067" y="174" text-anchor="middle" class="label">Azure AI Foundry</text>
+  <text x="1067" y="204" text-anchor="middle" class="body">Hosted model</text>
+  <text x="1067" y="230" text-anchor="middle" class="small">Grounded answer</text>
+
+  <path d="M280 200 H365" class="arrow"/>
+  <text x="323" y="180" text-anchor="middle" class="small">1. Ingest</text>
+  <path d="M615 200 H700" class="arrow"/>
+  <text x="658" y="180" text-anchor="middle" class="small">2. Retrieve</text>
+  <path d="M910 200 H980" class="arrow"/>
+  <text x="945" y="180" text-anchor="middle" class="small">3. Generate</text>
+
+  <path d="M1067 273 C1067 395, 805 420, 805 318" class="arrow"/>
+  <text x="995" y="401" text-anchor="middle" class="small">4. Answer with sources</text>
+  <text x="600" y="465" text-anchor="middle" class="body">Retrieval-Augmented Generation (RAG) grounds model responses in the indexed source documents.</text>
+</svg>

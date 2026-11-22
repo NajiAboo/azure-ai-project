@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+  </defs>
+  <rect width="900" height="470" fill="#ffffff"/>
+  <text x="450" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Retrieval-Augmented Generation (RAG) on Azure</text>
+
+  <!-- Indexing lane -->
+  <rect x="20" y="50" width="860" height="120" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="35" y="72" font-size="13" font-weight="700" fill="#64748b">A. INDEXING (done once, offline)</text>
+  <rect x="50" y="90" width="170" height="60" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="135" y="116" text-anchor="middle" font-size="14" font-weight="600">Documents</text>
+  <text x="135" y="134" text-anchor="middle" font-size="11" fill="#475569">PDF / Word / Blob Storage</text>
+  <rect x="290" y="90" width="230" height="60" rx="8" fill="#fef3c7" stroke="#d97706"/>
+  <text x="405" y="116" text-anchor="middle" font-size="14" font-weight="600">Indexer + Skillset</text>
+  <text x="405" y="134" text-anchor="middle" font-size="11" fill="#475569">extract text → split into chunks → embed</text>
+  <rect x="590" y="90" width="250" height="60" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="715" y="116" text-anchor="middle" font-size="14" font-weight="600">Azure AI Search Index</text>
+  <text x="715" y="134" text-anchor="middle" font-size="11" fill="#475569">chunk_id · chunk · title · vector</text>
+  <line x1="220" y1="120" x2="288" y2="120" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="520" y1="120" x2="588" y2="120" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Query lane -->
+  <rect x="20" y="190" width="860" height="265" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="35" y="212" font-size="13" font-weight="700" fill="#64748b">B. QUESTION ANSWERING (every request)</text>
+
+  <rect x="50" y="240" width="170" height="60" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="135" y="266" text-anchor="middle" font-size="14" font-weight="600">① User question</text>
+  <text x="135" y="284" text-anchor="middle" font-size="11" fill="#475569">"What is earned leave?"</text>
+
+  <rect x="290" y="240" width="230" height="60" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="405" y="266" text-anchor="middle" font-size="14" font-weight="600">② RETRIEVE</text>
+  <text x="405" y="284" text-anchor="middle" font-size="11" fill="#475569">search the index → top-k chunks</text>
+
+  <rect x="590" y="240" width="250" height="60" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="715" y="266" text-anchor="middle" font-size="14" font-weight="600">③ AUGMENT</text>
+  <text x="715" y="284" text-anchor="middle" font-size="11" fill="#475569">prompt = instructions + chunks + question</text>
+
+  <rect x="590" y="360" width="250" height="60" rx="8" fill="#fce7f3" stroke="#db2777"/>
+  <text x="715" y="386" text-anchor="middle" font-size="14" font-weight="600">④ GENERATE</text>
+  <text x="715" y="404" text-anchor="middle" font-size="11" fill="#475569">Azure OpenAI / Foundry model (LLM)</text>
+
+  <rect x="290" y="360" width="230" height="60" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="405" y="386" text-anchor="middle" font-size="14" font-weight="600">⑤ Answer + citations</text>
+  <text x="405" y="404" text-anchor="middle" font-size="11" fill="#475569">"Earned leave is ... [1]"</text>
+
+  <line x1="220" y1="270" x2="288" y2="270" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="520" y1="270" x2="588" y2="270" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="715" y1="300" x2="715" y2="358" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="590" y1="390" x2="522" y2="390" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <!-- index feeds retrieve -->
+  <path d="M715,150 C715,190 405,190 405,238" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#a)"/>
+  <text x="560" y="184" text-anchor="middle" font-size="11" fill="#2563eb">reads from</text>
+</svg>
